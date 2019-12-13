@@ -47,8 +47,9 @@ def main(args):
     global logger
     logger = logbook.Logger('KineticsGS', level=logbook.DEBUG if args.verbose else logbook.NOTICE)
     rm = get_rate_matrix()
-    print(rm.iloc[1])
+    pol = simulate_signal(rm, list(range(1, 70 + 1)), args.pulse_angle)
+    print(pol)
 
 
 if __name__ == '__main__':
-    main(parse_args())
+    main(parse_args(['test']))
