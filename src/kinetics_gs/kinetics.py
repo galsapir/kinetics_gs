@@ -21,14 +21,15 @@ def get_rate_matrix():
 
 
 def simulate_signal(rate_matrix, time_series, pulse_angle):
-    eig_vals, eig_vecs = la.eig(rate_matrix)
+    eig_vecs, eig_vals = la.eig(rate_matrix)
     eig_vecs_diag = np.diag(eig_vecs)
     initial_polarization = [1 - x1v0, x1v0, 0, 0]
     polarization = pd.DataFrame(np.zeros((4, len(time_series))))
     pulse_angle_cosine = np.cos(pulse_angle)
     for n, t in enumerate(time_series):
-        polarization.ix[:, n] = (eig_vals * np.diag(np.exp(eig_vecs_diag * t)) /
-                                 eig_vals * initial_polarization * (pulse_angle_cosine ** (n - 1)))
+        num = eig_vals * np.diag(np.exp(eig_vecs_diag * t))
+        den = eig_vals * initial_polarization * (pulse_angle_cosine ** (n - 1))
+        polarization.ix[:, n] = np.divide(num, den)
     return polarization
 
 
