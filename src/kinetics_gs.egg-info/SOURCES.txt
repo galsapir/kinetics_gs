@@ -1,0 +1,9 @@
+setup.py
+kinetics_gs/__init__.py
+kinetics_gs/kinetics.py
+kinetics_gs.egg-info/PKG-INFO
+kinetics_gs.egg-info/SOURCES.txt
+kinetics_gs.egg-info/dependency_links.txt
+kinetics_gs.egg-info/top_level.txt
+kinetics_gs/params/__init__.py
+kinetics_gs/params/params.py
