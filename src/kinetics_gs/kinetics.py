@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 from numpy import linalg as la
 
+# imports all parameters from the file
 from kinetics_gs.params import *
 
 DEFAULT_PULSE_ANGLE = 10
@@ -14,6 +15,7 @@ logger = logbook.Logger()
 
 
 def get_rate_matrix():
+    #  a function creating the rate matrix, returning it as a data frame.
     return pd.DataFrame([[-Ws0, 0,       0,           0],
                          [0,    -Ws1-k1, km1,         0],
                          [0,    k1,      -Wp1-km1-k2, km2],
